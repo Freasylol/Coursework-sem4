@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
+const db = require('./models');
 
 const PORT =  process.env.PORT || 3001; 
 
@@ -16,4 +17,4 @@ app.get('*', (req, res) => {
 
 console.log(path.join(__dirname, 'client', 'build', 'index.html'));
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`)); 
+db.sequelize.sync().then(req => app.listen(PORT, () => console.log(`Server running on port ${PORT}`))); 

@@ -1,25 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import ToolBar from './ToolBar';
+import { AppBar, Container, IconButton, Toolbar, Button, Typography, Box, makeStyles, Paper, Grid, Fade, Link} from '@material-ui/core';
+import { BrowserRouter as Router, NavLink, Switch, Route } from "react-router-dom";
+import Admin from './Admin';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1
+    },
+    menuButton: {
+        marginRight: theme.spacing(1)
+    },
+    mainFeaturePost: {
+        position: 'relative',
+        color: theme.palette.common.white,
+        margin: theme.spacing(4),
+
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center'
+    },
+    mainFeaturePostContent: {
+        position: 'relative',
+        padding: theme.spacing(6),
+        marginTop: theme.spacing(8),
+
+        display: 'flex',
+        flexDirection: 'column',
+    },
+}))
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const classes = useStyles();
+
+    return (
+        <>
+ 
+        <ToolBar />
+
+        <main>
+            <Grid container direction="column" md={3}>
+                <div className={classes.mainFeaturePostContent}>
+                    <Router>
+                        <NavLink to="/">
+                            <Button>
+                                Main
+                            </Button>
+                        </NavLink>
+
+                        <NavLink to="/admin">
+                            <Button>
+                                Admin
+                            </Button>
+                        </NavLink>
+                
+                        <Switch>
+                            <Route exact path="/admin" component={Admin} />
+                        </Switch>       
+                    </Router>
+                        
+                </div>      
+            </Grid>
+        </main>
+
+        </>
+    );
 }
 
 export default App;
