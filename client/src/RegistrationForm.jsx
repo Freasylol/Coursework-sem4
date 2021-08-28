@@ -2,7 +2,7 @@ import React from 'react';
 import {Field, Formik} from "formik";
 import  * as Yup from "yup";
 import Axios from 'axios';
-import { Button, TextField, makeStyles } from '@material-ui/core';
+import { Button, TextField, makeStyles, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     input: {
@@ -30,12 +30,12 @@ const RegistrationForm = () => {
     const classes = useStyles();
 
     const submitRegistration = values => {
-      Axios.post('https://coursework-test.herokuapp.com/users', {
+      Axios.post('https://itransition-final-project.herokuapp.com/users', {
           name: values.name, 
           lastName: values.lastName,
           email: values.email,
           password: values.password,
-          userRole: values.role
+          userRole: values.userRole ? 'admin' : 'user',
       })
     }
 
@@ -55,9 +55,9 @@ const RegistrationForm = () => {
       password: '',
       confirmPassword: '',
       email: '',
-      role: '',
+      userRole: '',
   }}
-
+a
   validateOnBlur
   onSubmit={values => submitRegistration(values)}
   validationSchema={validationSchema}
@@ -127,10 +127,12 @@ const RegistrationForm = () => {
           </p>
           {touched.confirmPassword && errors.confirmPassword && <p className={classes.error}>{errors.confirmPassword}</p>}
 
-          <p>
-              <Field type="checkbox" name="role" value={values.role} />
+          <div>
+            <Typography>
+              <Field type="checkbox" name="userRole"/>
               Administrator
-          </p>
+            </Typography>
+          </div>
 
           <Button
           disabled={!isValid && !dirty}
@@ -141,7 +143,6 @@ const RegistrationForm = () => {
       </div>)}
   </Formik>
 </div>
-
   )
 }
 

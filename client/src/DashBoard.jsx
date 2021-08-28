@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Container, IconButton, Toolbar, Button, Typography, Box, makeStyles, Dialog, DialogTitle, useTheme, useMediaQuery} from '@material-ui/core';
+import { AppBar, Container, IconButton, Toolbar, Button, Typography, Box, makeStyles, Dialog, DialogTitle, useTheme, useMediaQuery, Menu, MenuItem, Link} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import RegistrationForm from "./RegistrationForm.jsx";
 import LoginForm from "./LoginForm";
@@ -24,8 +24,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const ToolBar = () => {
+const DashBoard = () => {
     const classes = useStyles();
+
+    const preventDefault = event => event.preventDefault();
 
     const theme = useTheme();
 
@@ -34,6 +36,12 @@ const ToolBar = () => {
     const[openLogInDialog, setOpenLogInDialog] = React.useState(false);
 
     const[openSignUpDialog, setOpenSignUpDialog] = React.useState(false);
+
+    const[openMenu, setOpenMenu] = React.useState(false);
+
+    const handleOpenMenu = () => setOpenMenu(true);
+
+    const handleCloseMenu = () => setOpenMenu(false);
 
     const handleOpenLogInDialog = () => setOpenLogInDialog(true);
 
@@ -48,7 +56,7 @@ const ToolBar = () => {
         <Container fixed>
             <div className={classes.overlay} />
             <Toolbar>
-                <IconButton edge="start" color="inherit" aria-label="menu" className={classes.menuButton}>
+                <IconButton edge="start" color="inherit" aria-label="menu" className={classes.menuButton} onClick={handleOpenMenu}>
                     <MenuIcon />
                 </IconButton>
                 <Typography className={classes.title}>Roma</Typography>
@@ -77,4 +85,4 @@ const ToolBar = () => {
     )
 }
 
-export default ToolBar;
+export default DashBoard;

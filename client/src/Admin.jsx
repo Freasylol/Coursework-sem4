@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-// import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid } from '@material-ui/data-grid';
  
 const Admin = () => {
   let columns = [
@@ -15,17 +15,19 @@ const Admin = () => {
   ];
   const [dataArr, setDataArr] = useState([]);
 
-  useEffect(() => Axios.get('localhost:3001/users').then((response) => setDataArr(response.data)));
+  useEffect(async () => Axios.get('https://itransition-final-project.herokuapp.com/users').then((response) => setDataArr(response.data)));
 
   let rows = dataArr;
   return (
       <div style={{height: '86vh', width: '1200px'}}>
-        {/* <DataGrid 
+        <DataGrid 
           rows={rows}
           columns={columns}
-          pageSize={10}
-          checkBoxSelection
-          disableSelectionOnClick/> */}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          disableSelectionOnClick
+         />
       </div>
 
   )

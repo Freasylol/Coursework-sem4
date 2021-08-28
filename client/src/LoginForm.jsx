@@ -32,7 +32,7 @@ const LoginForm = () => {
     const classes = useStyles();
 
     const submitLogin = values => {
-      Axios.post('http://localhost:3001/api/insert', {
+      Axios.post('https://itransition-final-project.herokuapp.com/users', {
           userName: values.name, 
           userLastName: values.lastName,
           userEmail: values.email,
