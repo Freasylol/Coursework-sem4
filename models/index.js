@@ -2,10 +2,12 @@
 
 const fs = require('fs');
 const path = require('path');
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
+const { Basket, BasketDevice, Device, DeviceInfo, Rating, Type, TypeBrand, Users } = require('../models');
+
 const db = {};
 
 let sequelize;
@@ -30,6 +32,33 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
+
+db.Users.hasOne(db.Basket);
+db.Basket.belongsTo(db.Users);
+
+db.Users.hasMany(db.Rating);
+db.Rating.belongsTo(db.Users);
+
+db.Basket.hasMany(db.BasketDevice);
+db.BasketDevice.belongsTo(db.Basket);
+
+db.Type.hasMany(db.Device);
+db.Device.belongsTo(db.Type);
+
+db.Brand.hasMany(db.Device);
+db.Device.belongsTo(db.Brand);
+
+db.Device.hasMany(db.Rating);
+db.Rating.belongsTo(db.Device);
+
+db.Device.hasMany(db.BasketDevice);
+db.BasketDevice.belongsTo(db.Device);
+
+db.Device.hasMany(db.DeviceInfo, {as: 'info'});
+db.DeviceInfo.belongsTo(db.Device);
+
+db.Type.belongsToMany(db.Brand, {through: db.TypeBrand});
+db.Brand.belongsToMany(db.Type, { through: db.TypeBrand });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

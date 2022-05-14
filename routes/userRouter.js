@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Users } = require('../models');
+const { Basket } = require('../models')
 const cors = require('cors');
 
 router.use(express.json());
@@ -19,8 +20,7 @@ router.post('/', async (req, res) => {
         email: req.body.email,
         password: req.body.password,
         userRole: req.body.userRole,
-      });
-    
+      }); 
 });
 
 router.delete('/', async (req, res) => {

@@ -1,28 +1,29 @@
 module.exports = (sequelize, DataTypes) => {
+    
     const Users = sequelize.define('Users', {
         name: {
-            type:  DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         lastName: {
-            type:  DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         email: {
-            type:  DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
         password: {
-            type:  DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,

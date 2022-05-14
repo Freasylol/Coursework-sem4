@@ -6,7 +6,7 @@ import { DataGrid } from '@material-ui/data-grid';
  
 const Admin = () => {
   let columns = [
-    {field: 'id', headerName: 'ID'},
+    {field: 'id', headerName: 'ID', width: 100},
     {field: 'name', headerName: "NAME", width: 150},
     {field: 'lastName', headerName: 'LAST NAME', width: 200},
     {field: 'email', headerName: 'EMAIL', width: 300},
@@ -15,11 +15,11 @@ const Admin = () => {
   ];
   const [dataArr, setDataArr] = useState([]);
 
-  useEffect(async () => Axios.get('https://itransition-final-project.herokuapp.com/users').then((response) => setDataArr(response.data)));
+  useEffect(() => Axios.get('https://itransition-final-project.herokuapp.com/users').then((response) => setDataArr(response.data)));
 
   let rows = dataArr;
   return (
-      <div style={{height: '86vh', width: '1200px'}}>
+      <div style={{height: '95vh', maxWidth: '100%'}}>
         <DataGrid 
           rows={rows}
           columns={columns}

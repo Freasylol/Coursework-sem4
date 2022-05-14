@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {Formik} from "formik";
+import { Formik } from "formik";
 import  * as Yup from "yup";
 import Axios from 'axios';
 import { Button, TextField, makeStyles } from '@material-ui/core';
@@ -31,13 +31,17 @@ const useStyles = makeStyles((theme) => ({
 const LoginForm = () => {
     const classes = useStyles();
 
-    const submitLogin = values => {
-      Axios.post('https://itransition-final-project.herokuapp.com/users', {
-          userName: values.name, 
-          userLastName: values.lastName,
-          userEmail: values.email,
-          userPassword: values.password,
-      })
+    const submitLogin = async values => {
+        const emailValue = values.email;
+        const passwordValue = values.password;
+
+        // const user = await Users.findOne({where: {
+        //   email: emailValue,
+        //   password: passwordValue,
+        // }})
+        // if (!user) {
+        //     alert("User doesn't exist");
+        // }
   }
 
   const validationSchema = Yup.object().shape({
