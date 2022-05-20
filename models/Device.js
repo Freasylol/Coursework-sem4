@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         name: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
-            unique: true,
-            allowNull: false
+            // primaryKey: true,
+            // unique: true,
+            // allowNull: false
         },
         price: {
             type: DataTypes.INTEGER,

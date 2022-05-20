@@ -6,8 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         name: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         }
     });
     return Brand;
