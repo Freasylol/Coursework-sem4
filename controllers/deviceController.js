@@ -33,22 +33,20 @@ class DeviceController {
     }
 
     async getAll(req, res) {
-        let {BrandId, TypeId, limit, page} = req.query;
+        let {brandId, typeId, limit, page} = req.query;
 
         let devices;
 
-        console.log(req)
+        console.log(req.query)
 
-        // BrandId = 5
-
-        if (!BrandId && !TypeId) {
+        if (!brandId && !typeId) {
             devices = await db.Device.findAll();
-        } else if (BrandId && !TypeId) {
-            devices = await db.Device.findAll({where: {BrandId}});
-        } else if (!BrandId && TypeId) {
-            devices = await db.Device.findAll({where: {TypeId}});
+        } else if (brandId && !typeId) {
+            devices = await db.Device.findAll({where: {brandId}});
+        } else if (!brandId && typeId) {
+            devices = await db.Device.findAll({where: {typeId}});
         } else {
-            devices = await db.Device.findAll({where: {BrandId, TypeId}});
+            devices = await db.Device.findAll({where: {brandId, typeId}});
         }
        
         return res.json(devices);
