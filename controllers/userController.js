@@ -25,6 +25,7 @@ class UserController {
     async login(req, res, next) {
       const {email, password} = req.body;
       console.log(email);
+      console.log(password);
       const user = await db.Users.findOne({where: {email}})
 
       if (!user) {
@@ -39,7 +40,6 @@ class UserController {
       //   res.send('Указан неверный пароль');
       // }
 
-     
       const token = generateJwt(user.id, user.email, user.userRole);
 
       return res.send({token});
@@ -53,6 +53,26 @@ class UserController {
       const token = generateJwt(req.user.id, req.user.email, req.user.userRole);
 
       return res.json({token});
+    }
+
+    async delete(req, res) {
+      db.Users.destroy({
+        where: {
+          id: req.body.id
+        }
+      })
+    }
+
+    async update(req, res) {
+      db.Users.update(
+        {
+          name: "updateName"
+        },
+        {
+          where: {
+            id: req.body.id
+          }
+        })
     }
 }
 

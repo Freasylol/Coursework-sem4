@@ -14,8 +14,8 @@ userRouter.post('/', userController.registration);
 
 userRouter.get('/auth', authMiddleware, userController.check);
 
-userRouter.delete('/', async (req, res) => {
-    console.log('delete');
-})
+userRouter.delete('/', userController.delete);
+
+userRouter.put('/', userController.update);
 
 module.exports = userRouter;

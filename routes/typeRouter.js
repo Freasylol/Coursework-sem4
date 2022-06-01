@@ -10,7 +10,7 @@ typeRouter.use(express.urlencoded({extended: true}));
 
 typeRouter.get('/', typeController.getAll);
 
-typeRouter.post('/', checkRole, typeController.create);
+typeRouter.post('/', checkRole('admin'), typeController.create);
 
 typeRouter.delete('/', async (req, res) => {
     console.log('delete');
