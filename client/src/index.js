@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import UserStore from './store/userStore';
+import DeviceStore from './store/deviceStore';
+import { Divider } from '@material-ui/core';
+
+export const Context = createContext(null);   
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+  <div>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </div>,
   document.getElementById('root')
 );
 

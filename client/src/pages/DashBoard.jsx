@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         right: 0,
         bottom: 0,
         backgroundOverlay: 'rgba(0, 0, 0, .3)',
+        display: 'block'
     },
 }))
 
