@@ -1,34 +1,28 @@
-// import React, { useContext } from 'react'
-// import { observer } from 'mobx-react-lite'
-// import { Context } from '../index'
-// // import ListItem from '@mui/material/ListItem';
-// import ListItemButton from '@mui/material/ListItemButton';
-// // import ListItemIcon from '@mui/material/ListItemIcon';
-// // import ListItemText from '@mui/material/ListItemText';
-// import { Container, Grid, makeStyles } from '@material-ui/core';
+import React, { useContext } from 'react'
+import { observer } from 'mobx-react-lite'
+import { Context } from '../index'
+import ListItemButton from '@mui/material/ListItemButton';
+import { makeStyles } from '@material-ui/core';
 
-// const useStyles = makeStyles((theme) => ({
-//   label: {
-//     paddingTop: 100,
-//     display: 'block'
-//   },
-  
-// }))
+const useStyles = makeStyles((theme) => ({
+  label: {
+    paddingTop: 100,
+  }
+}))
 
-// const FilterBar = observer(() => {
-//   const classes = useStyles();
-//   const {device} = useContext(Context)
-//   return (
-//     <Container className={classes.label}>
-//       <Grid container>
-//         <Grid item md={3}>
-//           <ListItemButton>sdfsfdfddf</ListItemButton>
-//           <ListItemButton>fdsafasdf</ListItemButton>
-//         </Grid>
-//         <Grid item md={9}></Grid>
-//       </Grid> 
-//     </Container>
-//   );
-// });
+const FilterBar = observer(() => {
+  const {device} = useContext(Context)
+  const classes = useStyles();
+  return (
+    <div>
+      {device.types.map((type) =>
+          <ListItemButton onClick={() => device.setSelectedType(type)} selected={type.id === device.selectedType.id}
+            key={type.id}>
+            {type.name}
+          </ListItemButton>
+      )}
+    </div>
+  );
+});
 
-// export default FilterBar;
+export default FilterBar;

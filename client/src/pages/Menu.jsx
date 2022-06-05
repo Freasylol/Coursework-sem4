@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Typography, Box, makeStyles, Grid} from '@material-ui/core';
-import { BrowserRouter as Router, NavLink, Switch, Route } from "react-router-dom";
+import { Button, makeStyles, Grid} from '@material-ui/core';
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,7 +35,6 @@ const Menu = () => {
         <main>
             <Grid container direction="column" md={3}>
                 <div className={classes.mainFeaturePostContent}>
-                    {/* <Router> */}
                         <NavLink to="/">
                             <Button>
                                 Main
@@ -46,13 +45,7 @@ const Menu = () => {
                             <Button>
                                 Admin
                             </Button>
-                        </NavLink>
-                
-                        {/* <Switch>
-                            <Route exact path="/admin" component={Admin} />
-                        </Switch>       
-                    </Router> */}
-                        
+                        </NavLink>                        
                 </div>      
             </Grid>
         </main>

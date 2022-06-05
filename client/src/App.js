@@ -7,9 +7,9 @@ import Shop from './pages/Shop'
 import {Context} from './index'
  
 function App() {
-  // const {user} = useContext(Context)
+  const {user} = useContext(Context)
 
-  // console.log(user)
+  console.log(user)
   return (
     <div className="App">
       <DashBoard />

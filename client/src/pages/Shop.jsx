@@ -1,30 +1,29 @@
-import { Container, makeStyles, Grid } from "@material-ui/core";
-// import FilterBar from '../components/FilterBar';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import FilterBar from '../components/FilterBar';
+import BrandBar from '../components/BrandBar';
+import DeviceList from '../components/DeviceList'
+import { Container, Grid, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   label: {
     paddingTop: 100,
-    display: 'block'
   },
-  
 }))
 
 const Shop = () => {
   const classes = useStyles();
   return (
     <Container>
-    <Grid container className={classes.label}>
-      <Grid item md={3}>
-        <ListItemButton>sdfsfdfddf</ListItemButton>
-        <ListItemButton>fdsafasdf</ListItemButton>
+      <Grid container className={classes.label}>
+        <Grid item md={3}>
+          <FilterBar></FilterBar>
+        </Grid>
+        <Grid item md={9} className={classes.brandsBox}>
+          <BrandBar></BrandBar>
+          <DeviceList></DeviceList>
+        </Grid>
       </Grid>
-      <Grid item md={9}></Grid>
-    </Grid> 
-  </Container>
+      
+    </Container> 
   )
 }
 
