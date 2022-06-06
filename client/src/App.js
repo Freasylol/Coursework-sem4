@@ -9,7 +9,6 @@ import {Context} from './index'
 function App() {
   const {user} = useContext(Context)
 
-  console.log(user)
   return (
     <div className="App">
       <DashBoard />

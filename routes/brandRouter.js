@@ -11,8 +11,4 @@ brandRouter.get('/', brandController.getAll);
 
 brandRouter.post('/', brandController.create);
 
-brandRouter.delete('/', async (req, res) => {
-    console.log('delete');
-})
-
 module.exports = brandRouter;

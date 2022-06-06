@@ -3,6 +3,7 @@ import { AppBar, Container, IconButton, Toolbar, Button, Typography, Box, makeSt
 import MenuIcon from '@material-ui/icons/Menu';
 import RegistrationForm from "./RegistrationForm.jsx";
 import LoginForm from "./LoginForm";
+import LoginedUserName from "./LoginedUserName.jsx";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -60,7 +61,8 @@ const DashBoard = () => {
                 <IconButton edge="start" color="inherit" aria-label="menu" className={classes.menuButton} onClick={handleOpenMenu}>
                     <MenuIcon />
                 </IconButton>
-                <Typography className={classes.title}>Roma</Typography>
+                {/* <Typography className={classes.title}>Unauthorized</Typography> */}
+                <LoginedUserName></LoginedUserName>
                 <Box mr={3}>
                     <Button mr={3} color="inherit" variant="outlined" onClick={handleOpenLogInDialog}>Log in</Button>
                     <Dialog  fullScreen={fullScreen} open ={openLogInDialog} onClose={handleCloseLogInDialog} aria-labelledby='loginForm'>

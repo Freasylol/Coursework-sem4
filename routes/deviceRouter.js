@@ -11,8 +11,4 @@ deviceRouter.post('/', deviceController.create);
 
 deviceRouter.get('/', deviceController.getAll);
 
-deviceRouter.delete('/', async (req, res) => {
-    console.log('delete');
-})
-
 module.exports = deviceRouter;

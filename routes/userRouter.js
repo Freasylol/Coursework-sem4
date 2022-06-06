@@ -8,11 +8,15 @@ userRouter.use(express.json());
 userRouter.use(cors());               
 userRouter.use(express.urlencoded({extended: true}));
 
-userRouter.get('/', userController.login);
+userRouter.get('/login', userController.login);
 
-userRouter.post('/', userController.registration);
+userRouter.post('/registration', userController.registration);
 
 userRouter.get('/auth', authMiddleware, userController.check);
+
+userRouter.get('/', userController.getAll);
+
+userRouter.get('/:id', userController.getOne);
 
 userRouter.delete('/', userController.delete);
 

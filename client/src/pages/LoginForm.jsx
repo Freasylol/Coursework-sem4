@@ -1,46 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik } from "formik";
 import  * as Yup from "yup";
 import Axios from 'axios';
 import { Button, TextField, makeStyles } from '@material-ui/core';
+import { Context } from '../index';
 
 const useStyles = makeStyles((theme) => ({
-    input: {
-        lineHeight: '1.5em',
-        margin: 'dense',
-        padding: '4px 6px',
-        display: 'block',
-        width: '100%',
-        boxSizing: 'border-box',
-    },
-    form: {
-        display: 'block',
-        fontFamily: 'Arial Helvetica, sans-serif',
-        position: 'relative',
-        padding: '0 24px 24px 24px',
-        margin: 'auto',
-    },
-    error: {
-        color: 'red',
-        fontWeight: 700,
-        fontSize: '13px',
-    } 
+  input: {
+      lineHeight: '1.5em',
+      margin: 'dense',
+      padding: '4px 6px',
+      display: 'block',
+      width: '100%',
+      boxSizing: 'border-box',
+  },
+  form: {
+      display: 'block',
+      fontFamily: 'Arial Helvetica, sans-serif',
+      position: 'relative',
+      padding: '0 24px 24px 24px',
+      margin: 'auto',
+  },
+  error: {
+      color: 'red',
+      fontWeight: 700,
+      fontSize: '13px',
+  } 
 }))
 
 const LoginForm = () => {
-    const classes = useStyles();
+  const {user} = useContext(Context)
+  const classes = useStyles();
 
-    const submitLogin = async values => {
-        const emailValue = values.email;
-        const passwordValue = values.password;
+  const submitLogin = async (values, user) => {
+    const emailValue = values.email;
+    const passwordValue = values.password;
 
-        // const user = await Users.findOne({where: {
-        //   email: emailValue,
-        //   password: passwordValue,
-        // }})
-        // if (!user) {
-        //     alert("User doesn't exist");
-        // }
+    // const token = Axios.get('http://localhost:3001/users/login', {
+    //   email: values.email,
+    //   password: values.password,
+    // })
+
+    const userInfo = Axios.get(`http://localhost:3001/users/:${emailValue}`)
+
+    // user.setLoginedUser(userInfo.name)
+
+    console.log(userInfo)
+    // console.log(token)
   }
 
   const validationSchema = Yup.object().shape({
@@ -58,7 +64,7 @@ const LoginForm = () => {
       email: '',
   }}
   validateOnBlur
-  onSubmit={values => submitLogin(values)}
+  onSubmit={values => submitLogin(values, user)}
   validationSchema={validationSchema}
   >
       {({values, errors, touched, handleChange, handleBlur, 

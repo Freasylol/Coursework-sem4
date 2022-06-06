@@ -43,6 +43,7 @@ const DeviceItem = ({device, types, brands}) => {
             <img src='http://via.placeholder.com/150x150'></img>
             <Typography className={classes.cardTitle}>{deviceType}</Typography>
             <Typography className={classes.cardTitle}>{device.name}</Typography>
+            <Typography className={classes.cardTitle}>{`Цена: ${device.price}`}</Typography>
             <Button>Добавить в корзину</Button>
           </CardContent>
         </Card>

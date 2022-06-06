@@ -30,12 +30,12 @@ const RegistrationForm = () => {
     const classes = useStyles();
 
     const submitRegistration = values => {
-      Axios.post('https://itransition-final-project.herokuapp.com/users', {
-          name: values.name, 
-          lastName: values.lastName,
-          email: values.email,
-          password: values.password,
-          userRole: values.userRole ? 'admin' : 'user',
+      Axios.post('http://localhost:3001/users/registration', {
+        name: values.name, 
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+        userRole: values.userRole ? 'admin' : 'user',
       })
     }
 

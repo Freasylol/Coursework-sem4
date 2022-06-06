@@ -14,18 +14,17 @@ const generateJwt = (id, email, userRole) => {
 
 class UserController {
     async registration(req, res) {
-        const {name, lastName, email, password, userRole} = req.body;
-        const user = await db.Users.create({name, lastName, email, userRole, password: password});
-        const basket = await db.Basket.create({id: user.id})
-        const token = generateJwt(user.id, email, password);
+      const {name, lastName, email, password, userRole} = req.body;
+      const user = await db.Users.create({name, lastName, email, userRole, password: password});
+      const basket = await db.Basket.create({id: user.id})
+      const token = generateJwt(user.id, email, password);
 
-        res.json({token});
+      res.json({token});
     }
 
     async login(req, res, next) {
       const {email, password} = req.body;
-      console.log(email);
-      console.log(password);
+      console.log(email)
       const user = await db.Users.findOne({where: {email}})
 
       if (!user) {
@@ -33,12 +32,10 @@ class UserController {
         return;
       }
     
-    
-      // let comparePassword = bcrypt.compareSync(password, user.password);
-
-      // if (!comparePassword) {
-      //   res.send('Указан неверный пароль');
-      // }
+      if (password !== user.password) {
+        res.send('Указан неверный пароль');
+        return;
+      }
 
       const token = generateJwt(user.id, user.email, user.userRole);
 
@@ -47,6 +44,15 @@ class UserController {
 
     async getAll(req, res) {
         return await db.Users.findAll().then(users => res.json(users));
+    }
+
+    async getOne(req, res) {
+      console.log(req.params.id)
+      return await db.Users.findOne({
+        where: {
+          email: req.params.id
+        }
+      })
     }
 
     async check(req, res, next) {

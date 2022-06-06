@@ -1,6 +1,13 @@
 import {makeAutoObservable} from 'mobx';
+import Axios from 'axios'
 
 export default class DeviceStore {
+  async getTypes() {
+    return await Axios.get('http://localhost:3001/type').then((response => {
+      return response.data
+    }))
+  }
+
   constructor() {
     this._types = [
       {id: 5, name: 'Процессоры'},
@@ -8,6 +15,10 @@ export default class DeviceStore {
       {id: 25, name: 'Кулеры'},
       {id: 35, name: 'Смартфоны'}
     ]
+
+    // this._types = this.getTypes()
+    
+    // console.log(this._types)
 
     this._brands = [
       {id: 5, name: 'Apple'},
@@ -17,10 +28,10 @@ export default class DeviceStore {
     ]
 
     this._devices = [
-      {id: 5, name: 'IPhone 13', price: 1000, rating: 5, img: 'http://via.placeholder.com/400x300', TypeId: 35, BrandId: 5 },
-      {id: 5, name: 'IPhone 13 pro', price: 1500, rating: 5, img: 'http://via.placeholder.com/400x300', TypeId: 35, BrandId: 5 },
-      {id: 5, name: 'Samsung galaxy', price: 800, rating: 5, img: 'http://via.placeholder.com/400x300', TypeId: 35, BrandId: 15 },
-      {id: 5, name: 'DeepCool gammax 400', price: 800, rating: 5, img: 'http://via.placeholder.com/400x300', TypeId: 25, BrandId: 35 }
+      {id: 5, name: 'IPhone 13', price: 1000, rating: 5, img: 'http://via.placeholder.com/150x150', TypeId: 35, BrandId: 5 },
+      {id: 5, name: 'IPhone 13 pro', price: 1500, rating: 5, img: 'http://via.placeholder.com/150x150', TypeId: 35, BrandId: 5 },
+      {id: 5, name: 'Samsung galaxy', price: 800, rating: 5, img: 'http://via.placeholder.com/150x150', TypeId: 35, BrandId: 15 },
+      {id: 5, name: 'DeepCool gammax 400', price: 800, rating: 5, img: 'http://via.placeholder.com/150x150', TypeId: 25, BrandId: 35 }
     ]
 
     this._selectedType = {}
