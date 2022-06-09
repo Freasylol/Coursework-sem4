@@ -10,8 +10,9 @@ class BasketController {
     }
 
     async getAll(req, res) {
-        return await db.Basket.findAll().then(basket => res.json(basket));
+      return await db.Basket.findAll().then(basket => res.json(basket));
     }
+
 }
 
 module.exports = new BasketController()

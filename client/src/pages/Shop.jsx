@@ -2,7 +2,7 @@ import FilterBar from '../components/FilterBar';
 import BrandBar from '../components/BrandBar';
 import DeviceList from '../components/DeviceList'
 import { Container, Grid, makeStyles } from '@material-ui/core';
-// import AddButton from "../components/AddButton"
+import CartButton from "../components/CartButton"
 
 const useStyles = makeStyles((theme) => ({
   label: {
@@ -23,11 +23,12 @@ const Shop = () => {
       <Grid container className={classes.label}>
         <Grid item md={3}>
           <FilterBar></FilterBar>
-          {/* <AddButton></AddButton> */}
+          <CartButton></CartButton>
         </Grid>
         <Grid item md={9} className={classes.brandsBox}>
           <BrandBar></BrandBar>
           <DeviceList></DeviceList>
+         
         </Grid>
       </Grid>
       

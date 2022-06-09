@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const DeviceItem = ({device, types, brands, deviceStore, basket}) => {
+const CartItem = ({device, types, brands, deviceStore, basket}) => {
   const addToCart = async () => {
       if (!basket.isBasketCreated) {
         basket.setUserId(5);
@@ -73,4 +73,4 @@ const DeviceItem = ({device, types, brands, deviceStore, basket}) => {
   )
 }
 
-export default DeviceItem
+export default CartItem

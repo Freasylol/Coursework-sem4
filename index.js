@@ -12,6 +12,7 @@ const deviceRouter = require('./routes/deviceRouter');
 const typeRouter = require('./routes/typeRouter');
 const brandRouter = require('./routes/brandRouter');
 const basketRouter = require('./routes/basketRouter');
+const basketItemRouter = require('./routes/basketItemRouter');
 
 
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use('/device', deviceRouter);
 app.use('/type', typeRouter);
 app.use('/brand', brandRouter);
 app.use('/basket', basketRouter);
+app.use('/basketItem', basketItemRouter);
 
 
 app.use(express.static(path.join(__dirname,'/client', 'build')));
