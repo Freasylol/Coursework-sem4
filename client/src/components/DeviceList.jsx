@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex'
   },
   deviceWrapper: {
-    display: 'flex'
+    display: 'flex',
+    flexWrap: 'wrap'
   }
 }));
 

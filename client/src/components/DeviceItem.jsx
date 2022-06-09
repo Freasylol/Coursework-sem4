@@ -3,7 +3,9 @@ import Button from '@mui/material/Button';
 
 const useStyles = makeStyles((theme) => ({
   deviceItem: {
-    display: 'flex'
+    display: 'flex',
+    width: '33%',
+    marginBottom: 30
   },
   cardItem: {
     display: 'flex',
@@ -35,16 +37,20 @@ const DeviceItem = ({device, types, brands}) => {
       deviceBrand = brand.name;
     }
   }
+
+  const imgPath = `../../../static/${device.img}`
+  console.log(imgPath)
   return (
     <Grid container className={classes.deviceItem}>
       <Grid className={classes.cardItem}>
         <Card>
           <CardContent className={classes.cardContent}>
-            <img src='http://via.placeholder.com/150x150'></img>
+            <img src={imgPath} height="150" width="150"  alt="device img"></img>
             <Typography className={classes.cardTitle}>{deviceType}</Typography>
+            <Typography className={classes.cardTitle}>{deviceBrand}</Typography>
             <Typography className={classes.cardTitle}>{device.name}</Typography>
-            <Typography className={classes.cardTitle}>{`Цена: ${device.price}`}</Typography>
-            <Button>Добавить в корзину</Button>
+            <Typography className={classes.cardTitle}>{`Price: ${device.price}`}</Typography>
+            <Button>Add to cart</Button>
           </CardContent>
         </Card>
       </Grid>
